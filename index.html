@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converto</title>
+    <script src="converter.js" defer></script>
+</head>
+<body>
+    <h1>Welcome to Converto</h1>
+    <h2>Here we will help you convert values to different units such as weight, length, and temperature.</h2>
+    <p>Choose a measurement:</p>
+    <select name="measurement" id="measurement">
+        <option value="temperature"></option>
+    </select>
+<div class="temperatureConverter">
+    <select id="tempUnitInput">
+        <option value="Celsius">Celsius(°C)</option>
+        <option value="Fahrenheit">Fahrenheit(°F)</option>
+        <option value="Kelvin">Kelvin(K)</option>
+    </select>
+    <br>
+    <input id="tempInput" type="number" placeholder="enter your value here" oninput="">
+    <br><br>
+    <select id="tempUnitOutput">
+        <option value="Celsius">Celsius(°C)</option>
+        <option value="Fahrenheit">Fahrenheit(°F)</option>
+        <option value="Kelvin">Kelvin(K)</option>
+    </select>
+    <br>
+    <input id="tempOutput" type="number" placeholder="output">
+</div>
+</body>
+</html>
