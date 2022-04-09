@@ -6,7 +6,7 @@ class Temperature {
     }
 
     convert() {
-        console.log(this.input)
+        if(isNaN(this.input)) return
         switch (this.inputUnit) {
             case 'Celsius':
                 this.celsiusConvert()
@@ -80,7 +80,6 @@ class Temperature {
 
     updateDisplay(output) {
         document.getElementById('tempOutput').value = output
-        console.log(output)
     }
 }
 
@@ -92,12 +91,16 @@ let tempUnitOutput = document.getElementById('tempUnitOutput')
 const temperature = new Temperature()
 
 tempInput.addEventListener('input', (e) => {
+    if (e.target.value.slice(e.target.value.length - 1) == '') return
     temperature.input = e.target.value
+    temperature.convert()
 })
-tempUnitInput.addEventListener('onchange', (e) => {
+tempUnitInput.addEventListener('input', (e) => {
     temperature.inputUnit = e.target.value
+    temperature.convert()
+
 })
-tempUnitOutput.addEventListener('onChange', (e) => {
+tempUnitOutput.addEventListener('input', (e) => {
     temperature.outputUnit = e.target.value
-    console.log(e)
+    temperature.convert()
 })
