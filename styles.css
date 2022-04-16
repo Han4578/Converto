@@ -1,0 +1,57 @@
+body {
+    background-color: #4166f5;
+    padding: 5rem;
+    padding-top: 0;
+    color: white;
+}
+
+.convertContainer {
+    margin-top: 2rem;
+    background-color: rgba(255, 255, 255, 0.677);
+    height: 17rem;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+
+}
+
+.convertItems {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 40%;
+}
+
+
+select {
+    height: 2rem;
+    width: 8rem;
+    border-radius: 2rem;
+}
+
+input {
+    height: 14rem;
+    border-radius: 20px;
+    text-align: start;
+    font-size: 1rem;
+}
+
+.swap {
+    height: 2rem;
+    aspect-ratio: 1;
+    padding: none;
+    border-radius: 10px;
+}
+
+h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 4rem;
+}
+h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+}

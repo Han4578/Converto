@@ -6,34 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Converto</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,600;1,700&display=swap" rel="stylesheet">
     <script src="converter.js" defer></script>
+    <script src="https://kit.fontawesome.com/7574a036fb.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <h1>Welcome to Converto</h1>
     <h2>Here we will help you convert values to different units such as weight, length, and temperature.</h2>
-    <p>Choose a measurement:</p>
+    <h2>Choose a measurement:</h2>
     <select id="measurement">
-        <option value="temperature"></option>
+        <option value="temperature">temperature</option>
     </select>
-    <div class="temperatureConverter">
-        <select id="tempUnitInput">
-            <option value="Celsius">Celsius(°C)</option>
-            <option value="Fahrenheit">Fahrenheit(°F)</option>
-            <option value="Kelvin">Kelvin(K)</option>
-        </select>
-        <br>
-        <input id="tempInput" type="number" placeholder="enter your value here">
+    <br>
+    <div class="convertContainer">
+        <div class="input convertItems">
+            <select id="tempUnitInput">
+                <option value="Celsius">Celsius(°C)</option>
+                <option value="Fahrenheit">Fahrenheit(°F)</option>
+                <option value="Kelvin">Kelvin(K)</option>
+            </select>
+            <input id="tempInput" type="number" placeholder="enter your value here">
 
-        <br><br>
+        </div>
 
-        <select id="tempUnitOutput">
-            <option value="Celsius">Celsius(°C)</option>
-            <option value="Fahrenheit">Fahrenheit(°F)</option>
-            <option value="Kelvin">Kelvin(K)</option>
-        </select>
-        <br>
-        <input id="tempOutput" type="number" placeholder="output" readonly>
+        <button class="swap"><i class="fa-solid fa-rotate"></i></button>
+
+        <div class="output convertItems">
+            <select id="tempUnitOutput">
+                <option value="Celsius">Celsius(°C)</option>
+                <option value="Fahrenheit">Fahrenheit(°F)</option>
+                <option value="Kelvin">Kelvin(K)</option>
+            </select>
+            <input id="tempOutput" type="number" placeholder="output" readonly>
+        </div>
     </div>
 
 </body>
