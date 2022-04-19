@@ -55,3 +55,11 @@ h2 {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 600;
 }
+
+.selection {
+    display: none;
+}
+
+.active {
+    display: block;
+}
