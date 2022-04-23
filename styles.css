@@ -5,25 +5,6 @@ body {
     color: white;
 }
 
-.convertContainer {
-    margin-top: 2rem;
-    background-color: rgba(255, 255, 255, 0.677);
-    height: 17rem;
-    padding: 1rem;
-    padding-bottom: 2rem;
-    border-radius: 2rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-
-}
-
-.convertItems {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 40%;
-}
 
 
 select {
@@ -39,7 +20,7 @@ input {
     font-size: 1rem;
 }
 
-.swap {
+button {
     height: 2rem;
     aspect-ratio: 1;
     padding: none;
@@ -51,6 +32,7 @@ h1 {
     font-weight: 700;
     font-size: 4rem;
 }
+
 h2 {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 600;
@@ -60,6 +42,38 @@ h2 {
     display: none;
 }
 
+.convertContainer {
+    margin-top: 2rem;
+    background-color: rgba(255, 255, 255, 0.677);
+    height: 17rem;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+
+}
+
+.convertItems {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 40%;
+}
+
 .active {
     display: block;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.clear{
+    aspect-ratio: 2 / 1;
 }

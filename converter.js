@@ -6,7 +6,7 @@ class Temperature {
     }
 
     convertToKelvin() {
-        if (isNaN(this.input)) return
+        if (isNaN(this.input) || this.input == '') return
         let input = parseFloat(this.input);
         let output
         switch (this.inputUnit) {
@@ -36,6 +36,10 @@ class Temperature {
                 output = input
                 break;
             case 'Fahrenheit':
+                if(this.inputUnit == 'Fahrenheit') {
+                    output = this.input
+                    break
+                }
                 output = (input - 273.15) * 9 / 5 + 32
                 break;
             default:
@@ -45,7 +49,7 @@ class Temperature {
     }
 
     updateDisplay(output) {
-        document.getElementById('output').value = output
+        outputValue.value = output
     }
 }
 class Distance {
@@ -101,9 +105,11 @@ class Distance {
 
 let measurementValue = document.getElementById('measurement')
 let input = document.getElementById('input')
+let outputValue = document.getElementById('output')
 let unitInput = document.querySelectorAll('.unitInput')
 let unitOutput = document.querySelectorAll('.unitOutput')
 let swapButton = document.querySelector('.swap')
+let clearButton = document.querySelector('.clear')
 let selection = document.querySelectorAll('.selection')
 let inputValue
 let unitInputValue = document.querySelector('.active.unitInput').value
@@ -146,6 +152,10 @@ swapButton.addEventListener('click', () => {
     convert()
 })
 
+clearButton.addEventListener('click', () => {
+    input.value = inputValue = output.value = ''
+})
+
 function convert() {
     switch (document.querySelector('#measurement').value) {
         case('temperature'):
@@ -163,4 +173,3 @@ function convert() {
         default:return
     }
 }
-
