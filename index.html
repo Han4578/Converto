@@ -16,28 +16,27 @@
 <body>
     <h1>Welcome to Converto</h1>
     <h2>Here we will help you convert values to different units such as weight, distance, and temperature.</h2>
-    <h2>Choose a measurement:</h2>
-    <select id="measurement">
+    <h2>Choose a physical quantity:</h2>
+    <select id="physicalQuantity">
         <option value="temperature">Temperature</option>
         <option value="distance">Distance</option>
     </select>
     <br>
     <div class="convertContainer">
         <div class="input convertItems">
-            <select class="selection active unitInput">
+            <select class="selection active unitInput temperature">
                 <option value="Celsius">Celsius(°C)</option>
                 <option value="Fahrenheit" selected>Fahrenheit(°F)</option>
                 <option value="Kelvin">Kelvin(K)</option>
             </select>
-            <select class="selection unitInput">
+            <select class="selection unitInput distance">
                 <option value="Kilometer">Kilometer(km)</option>
                 <option value="Meter" selected>Meter(m)</option>
                 <option value="Centimeter">Centimeter(cm)</option>
                 <option value="Millimeter">Millimeter(mm)</option>
-                <option value="Nanometer">Nanometer(nm)</option>
                 <option value="Mile">Mile(mi)</option>
                 <option value="Yard">Yard(yd)</option>
-                <option value="Feet">Feet(ft)</option>
+                <option value="Foot">Foot(ft)</option>
                 <option value="Inch">Inch(in)</option>
             </select>
             <input id="input" type="number" placeholder="enter your value here">
@@ -48,20 +47,19 @@
         </div>
 
         <div class="output convertItems">
-            <select class="selection active unitOutput">
+            <select class="selection active unitOutput temperature">
                 <option value="Celsius">Celsius(°C)</option>
                 <option value="Fahrenheit">Fahrenheit(°F)</option>
                 <option value="Kelvin">Kelvin(K)</option>
             </select>
-            <select class="selection unitOutput">
+            <select class="selection unitOutput distance">
                 <option value="Kilometer">Kilometer(km)</option>
                 <option value="Meter">Meter(m)</option>
                 <option value="Centimeter">Centimeter(cm)</option>
                 <option value="Millimeter">Millimeter(mm)</option>
-                <option value="Nanometer">Nanometer(nm)</option>
                 <option value="Mile">Mile(mi)</option>
                 <option value="Yard" selected>Yard(yd)</option>
-                <option value="Feet">Feet(ft)</option>
+                <option value="Foot">Foot(ft)</option>
                 <option value="Inch">Inch(in)</option>
             </select>
             <input id="output" type="number" placeholder="output" readonly>

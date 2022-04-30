@@ -36,7 +36,7 @@ class Temperature {
                 output = input
                 break;
             case 'Fahrenheit':
-                if(this.inputUnit == 'Fahrenheit') {
+                if (this.inputUnit == 'Fahrenheit') {
                     output = this.input
                     break
                 }
@@ -55,24 +55,39 @@ class Temperature {
 class Distance {
     constructor() {
         this.input
-        this.inputUnit
-        this.outputUnit = unitOutputValue
+        this.inputUnit = 'Meter'
+        this.outputUnit = 'Yard'
     }
 
-    convertToKelvin() {
+    convertToMeter() {
         if (isNaN(this.input)) return
         let input = parseFloat(this.input);
         let output
         switch (this.inputUnit) {
-            case 'Celsius':
-                output = input + 273.15
+            case 'Kilometer':
+                output = input * 1000
                 break;
-            case 'Kelvin':
+            case 'Meter':
                 output = input
 
                 break;
-            case 'Fahrenheit':
-                output = (input - 32) * 5 / 9 + 273.15
+            case 'Centimeter':
+                output = input / 100
+                break;
+            case 'Millimeter':
+                output = input / 1000
+                break;
+            case 'Mile':
+                output = input * 1609
+                break;
+            case 'Yard':
+                output = input / 1.094
+                break;
+            case 'Foot':
+                output = input / 3.281
+                break;
+            case 'Inch':
+                output = input / 39.37
                 break;
             default:
                 return
@@ -83,14 +98,30 @@ class Distance {
     convertToOutput(input) {
         let output
         switch (this.outputUnit) {
-            case 'Celsius':
-                output = input - 273.15
+            case 'Kilometer':
+                output = input / 1000
                 break;
-            case 'Kelvin':
+            case 'Meter':
                 output = input
+
                 break;
-            case 'Fahrenheit':
-                output = (input - 273.15) * 9 / 5 + 32
+            case 'Centimeter':
+                output = input * 100
+                break;
+            case 'Millimeter':
+                output = input * 1000
+                break;
+            case 'Mile':
+                output = input / 1609
+                break;
+            case 'Yard':
+                output = input * 1.094
+                break;
+            case 'Foot':
+                output = input * 3.281
+                break;
+            case 'Inch':
+                output = input * 39.37
                 break;
             default:
                 return
@@ -99,24 +130,52 @@ class Distance {
     }
 
     updateDisplay(output) {
-        document.getElementById('output').value = output
+        outputValue.value = output
     }
 }
 
-let measurementValue = document.getElementById('measurement')
+let physicalQuantity = document.getElementById('physicalQuantity')
 let input = document.getElementById('input')
-let outputValue = document.getElementById('output')
+let inputValue
 let unitInput = document.querySelectorAll('.unitInput')
+let unitInputValue = 'Fahrenheit'
 let unitOutput = document.querySelectorAll('.unitOutput')
+let unitOutputValue = 'Celsius'
+let outputValue = document.getElementById('output')
 let swapButton = document.querySelector('.swap')
 let clearButton = document.querySelector('.clear')
 let selection = document.querySelectorAll('.selection')
-let inputValue
-let unitInputValue = document.querySelector('.active.unitInput').value
-let unitOutputValue = document.querySelector('.active.unitOutput').value
 
-const temperature = new Temperature() 
-const distance = new Distance() 
+const temperature = new Temperature()
+const distance = new Distance()
+
+physicalQuantity.addEventListener('input', e => {
+    let activeClass
+    switch (e.target.value) {
+        case 'temperature':
+            activeClass = '.temperature'
+            break;
+
+        case 'distance':
+            activeClass = '.distance'
+            break;
+        default:
+            return
+    }
+
+    document.querySelectorAll('.active').forEach(i => {
+        i.classList.remove('active')
+    })
+
+    document.querySelectorAll(activeClass).forEach(i => {
+        i.classList.add('active')
+    })
+
+    unitInputValue = document.querySelector('.active.unitInput').value
+    unitOutputValue = document.querySelector('.active.unitOutput').value
+
+    clear()
+})
 
 input.addEventListener('input', e => {
     if (e.target.value.slice(e.target.value.distance - 1) == '') return;
@@ -152,24 +211,27 @@ swapButton.addEventListener('click', () => {
     convert()
 })
 
-clearButton.addEventListener('click', () => {
+clearButton.addEventListener('click', clear)
+
+function clear() {
     input.value = inputValue = output.value = ''
-})
+}
 
 function convert() {
-    switch (document.querySelector('#measurement').value) {
-        case('temperature'):
-        temperature.input = inputValue
-        temperature.inputUnit = unitInputValue
-        temperature.outputUnit = unitOutputValue
-        temperature.convertToKelvin()
-        break;
-        case('distance'):
-        distance.input = inputValue
-        distance.inputUnit = unitInputValue
-        distance.outputUnit = unitOutputValue
-       // distance.convertToMeter()
-        break;
-        default:return
+    switch (physicalQuantity.value) {
+        case ('temperature'):
+            temperature.input = inputValue
+            temperature.inputUnit = unitInputValue
+            temperature.outputUnit = unitOutputValue
+            temperature.convertToKelvin()
+            break;
+        case ('distance'):
+            distance.input = inputValue
+            distance.inputUnit = unitInputValue
+            distance.outputUnit = unitOutputValue
+            distance.convertToMeter()
+            break;
+        default:
+            return
     }
 }
