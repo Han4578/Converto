@@ -1,15 +1,9 @@
-class Temperature {
-    constructor() {
-        this.input
-        this.inputUnit = 'Fahrenheit'
-        this.outputUnit = 'Celsius'
-    }
-
+const temperature = {
     convertToKelvin() {
-        if (isNaN(this.input) || this.input == '') return
-        let input = parseFloat(this.input);
+        if (isNaN(inputValue) || inputValue == '') return
+        let input = parseFloat(inputValue);
         let output
-        switch (this.inputUnit) {
+        switch (unitInputValue) {
             case 'Celsius':
                 output = input + 273.15
                 break;
@@ -24,11 +18,11 @@ class Temperature {
                 return
         }
         this.convertToOutput(output)
-    }
+    },
 
     convertToOutput(input) {
         let output
-        switch (this.outputUnit) {
+        switch (unitOutputValue) {
             case 'Celsius':
                 output = input - 273.15
                 break;
@@ -46,30 +40,23 @@ class Temperature {
                 return
         }
         this.updateDisplay(output)
-    }
+    },
 
     updateDisplay(output) {
         outputValue.value = output
     }
 }
-class Distance {
-    constructor() {
-        this.input
-        this.inputUnit = 'Meter'
-        this.outputUnit = 'Yard'
-    }
-
+const distance = {
     convertToMeter() {
-        if (isNaN(this.input)) return
-        let input = parseFloat(this.input);
+        if (isNaN(inputValue)) return
+        let input = parseFloat(inputValue);
         let output
-        switch (this.inputUnit) {
+        switch (unitInputValue) {
             case 'Kilometer':
                 output = input * 1000
                 break;
             case 'Meter':
                 output = input
-
                 break;
             case 'Centimeter':
                 output = input / 100
@@ -78,10 +65,10 @@ class Distance {
                 output = input / 1000
                 break;
             case 'Mile':
-                output = input * 1609
+                output = input * 1609.344
                 break;
             case 'Yard':
-                output = input / 1.094
+                output = input / 1.0936132983
                 break;
             case 'Foot':
                 output = input / 3.281
@@ -92,18 +79,52 @@ class Distance {
             default:
                 return
         }
-        this.convertToOutput(output)
-    }
+        this.convertToMeterOutput(output)
+    },
 
-    convertToOutput(input) {
+    convertToYard() {
+        if (isNaN(inputValue)) return
+        let input = parseFloat(inputValue);
         let output
-        switch (this.outputUnit) {
+        switch (unitInputValue) {
+            case 'Kilometer':
+                output = input * 1093.6132983
+                break;
+            case 'Meter':
+                output = input * 1.0936132983
+                break;
+            case 'Centimeter':
+                output = input * 0.110936132983
+                break;
+            case 'Millimeter':
+                output = input * 0.010936132983
+                break;
+            case 'Mile':
+                output = input * 1760
+                break;
+            case 'Yard':
+                output = input
+                break;
+            case 'Foot':
+                output = input / 3
+                break;
+            case 'Inch':
+                output = input / 12
+                break;
+            default:
+                return
+        }
+        this.convertToYardOutput(output)
+    },
+
+    convertToMeterOutput(input) {
+        let output
+        switch (unitOutputValue) {
             case 'Kilometer':
                 output = input / 1000
                 break;
             case 'Meter':
                 output = input
-
                 break;
             case 'Centimeter':
                 output = input * 100
@@ -111,23 +132,31 @@ class Distance {
             case 'Millimeter':
                 output = input * 1000
                 break;
+            default:
+                return
+        }
+        this.updateDisplay(output)
+    },
+    convertToYardOutput(input) {
+        let output
+        switch (unitOutputValue) {
             case 'Mile':
-                output = input / 1609
+                output = input / 1760
                 break;
             case 'Yard':
-                output = input * 1.094
+                output = input
                 break;
             case 'Foot':
-                output = input * 3.281
+                output = input * 3
                 break;
             case 'Inch':
-                output = input * 39.37
+                output = input * 12
                 break;
             default:
                 return
         }
         this.updateDisplay(output)
-    }
+    },
 
     updateDisplay(output) {
         outputValue.value = output
@@ -146,16 +175,12 @@ let swapButton = document.querySelector('.swap')
 let clearButton = document.querySelector('.clear')
 let selection = document.querySelectorAll('.selection')
 
-const temperature = new Temperature()
-const distance = new Distance()
-
 physicalQuantity.addEventListener('input', e => {
     let activeClass
     switch (e.target.value) {
         case 'temperature':
             activeClass = '.temperature'
             break;
-
         case 'distance':
             activeClass = '.distance'
             break;
@@ -220,16 +245,15 @@ function clear() {
 function convert() {
     switch (physicalQuantity.value) {
         case ('temperature'):
-            temperature.input = inputValue
-            temperature.inputUnit = unitInputValue
-            temperature.outputUnit = unitOutputValue
             temperature.convertToKelvin()
             break;
         case ('distance'):
-            distance.input = inputValue
-            distance.inputUnit = unitInputValue
-            distance.outputUnit = unitOutputValue
-            distance.convertToMeter()
+            if (unitOutputValue == 'Kilometer' || 'Meter' || 'Centimeter' || 'Millimeter') {
+                distance.convertToMeter()
+            } else {
+                console.log('hi')
+                distance.convertToYard()
+            }
             break;
         default:
             return
