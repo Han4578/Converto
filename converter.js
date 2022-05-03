@@ -68,56 +68,21 @@ const distance = {
                 output = input * 1609.344
                 break;
             case 'Yard':
-                output = input / 1.0936132983
+                output = input * 0.9144
                 break;
             case 'Foot':
-                output = input / 3.281
+                output = input * 0.3048
                 break;
             case 'Inch':
-                output = input / 39.37
+                output = input * 0.0254
                 break;
             default:
                 return
         }
-        this.convertToMeterOutput(output)
+        this.convertToOutput(output)
     },
 
-    convertToYard() {
-        if (isNaN(inputValue)) return
-        let input = parseFloat(inputValue);
-        let output
-        switch (unitInputValue) {
-            case 'Kilometer':
-                output = input * 1093.6132983
-                break;
-            case 'Meter':
-                output = input * 1.0936132983
-                break;
-            case 'Centimeter':
-                output = input * 0.110936132983
-                break;
-            case 'Millimeter':
-                output = input * 0.010936132983
-                break;
-            case 'Mile':
-                output = input * 1760
-                break;
-            case 'Yard':
-                output = input
-                break;
-            case 'Foot':
-                output = input / 3
-                break;
-            case 'Inch':
-                output = input / 12
-                break;
-            default:
-                return
-        }
-        this.convertToYardOutput(output)
-    },
-
-    convertToMeterOutput(input) {
+    convertToOutput(input) {
         let output
         switch (unitOutputValue) {
             case 'Kilometer':
@@ -132,25 +97,17 @@ const distance = {
             case 'Millimeter':
                 output = input * 1000
                 break;
-            default:
-                return
-        }
-        this.updateDisplay(output)
-    },
-    convertToYardOutput(input) {
-        let output
-        switch (unitOutputValue) {
             case 'Mile':
-                output = input / 1760
+                output = input / 1609.344
                 break;
             case 'Yard':
-                output = input
+                output = input / 0.9144
                 break;
             case 'Foot':
-                output = input * 3
+                output = input / 0.3048
                 break;
             case 'Inch':
-                output = input * 12
+                output = input / 0.0254
                 break;
             default:
                 return
@@ -248,12 +205,7 @@ function convert() {
             temperature.convertToKelvin()
             break;
         case ('distance'):
-            if (unitOutputValue == 'Kilometer' || 'Meter' || 'Centimeter' || 'Millimeter') {
-                distance.convertToMeter()
-            } else {
-                console.log('hi')
-                distance.convertToYard()
-            }
+            distance.convertToMeter()
             break;
         default:
             return

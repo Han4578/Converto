@@ -14,9 +14,8 @@ select {
 }
 
 input {
-    height: 14rem;
+    height: 80%;
     border-radius: 20px;
-    text-align: start;
     font-size: 1rem;
 }
 
@@ -51,6 +50,7 @@ h2 {
     border-radius: 2rem;
     display: flex;
     justify-content: space-around;
+    flex-direction: row;
     align-items: stretch;
 
 }
@@ -76,4 +76,40 @@ h2 {
 
 .clear{
     aspect-ratio: 2 / 1;
+}
+
+@media only screen and (max-width: 600px) {
+    * {
+        font-size: 12px;
+    }
+    
+    body {
+        padding: 1rem;
+    }
+    
+    button {
+        height: 2.5rem;
+    }
+    
+    input {
+        height: 8rem;
+    }
+    
+    .convertContainer {
+        flex-direction: column;
+        gap: 2rem;
+        height: auto;
+    }
+    
+     .convertItems {
+    width: 90%;
+    }
+    
+    .selection {
+        width: 9rem;
+    }
+    .buttonContainer {
+        flex-direction: row;
+        justify-content: space-around;
+    }
 }
