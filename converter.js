@@ -25,16 +25,17 @@ const temperature = {
         switch (unitOutputValue) {
             case 'Celsius':
                 output = input - 273.15
+                outputUnit = '°C'
                 break;
             case 'Kelvin':
                 output = input
+                outputUnit = 'K'
                 break;
             case 'Fahrenheit':
-                if (this.inputUnit == 'Fahrenheit') {
-                    output = this.input
-                    break
-                }
-                output = (input - 273.15) * 9 / 5 + 32
+                outputUnit = '°F'
+                if (unitInputValue == 'Fahrenheit') {
+                    output = inputValue
+                } else output = (input - 273.15) * 9 / 5 + 32;
                 break;
             default:
                 return
@@ -43,7 +44,7 @@ const temperature = {
     },
 
     updateDisplay(output) {
-        outputValue.value = output
+        outputValue.value = output + outputUnit
     }
 }
 const distance = {
@@ -87,27 +88,35 @@ const distance = {
         switch (unitOutputValue) {
             case 'Kilometer':
                 output = input / 1000
+                outputUnit = 'km'
                 break;
             case 'Meter':
                 output = input
+                outputUnit = 'm'
                 break;
             case 'Centimeter':
                 output = input * 100
+                outputUnit = 'cm'
                 break;
             case 'Millimeter':
                 output = input * 1000
+                outputUnit = 'mm'
                 break;
             case 'Mile':
                 output = input / 1609.344
+                outputUnit = 'mi'
                 break;
             case 'Yard':
                 output = input / 0.9144
+                outputUnit = 'yd'
                 break;
             case 'Foot':
                 output = input / 0.3048
+                outputUnit = 'ft'
                 break;
             case 'Inch':
                 output = input / 0.0254
+                outputUnit = 'in'
                 break;
             default:
                 return
@@ -116,7 +125,7 @@ const distance = {
     },
 
     updateDisplay(output) {
-        outputValue.value = output
+        outputValue.value = output + outputUnit;
     }
 }
 
@@ -128,6 +137,7 @@ let unitInputValue = 'Fahrenheit'
 let unitOutput = document.querySelectorAll('.unitOutput')
 let unitOutputValue = 'Celsius'
 let outputValue = document.getElementById('output')
+let outputUnit = '°C'
 let swapButton = document.querySelector('.swap')
 let clearButton = document.querySelector('.clear')
 let selection = document.querySelectorAll('.selection')
